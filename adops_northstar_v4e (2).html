@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ADOPS North Star: Strategic Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #1E3A5F;
+  --navy-deep:  #142843;
+  --blue:       #2A6FA8;
+  --blue-light: #DFF0FB;
+  --teal:       #2E8B72;
+  --teal-light: #DDF3ED;
+  --gold:       #9A7018;
+  --gold-mid:   #C89A30;
+  --gold-light: #FBF0D4;
+  --ink:        #1E2A38;
+  --ink-mid:    #4A5568;
+  --ink-light:  #8A96A3;
+  --bg:         #F2F4F7;
+  --surface:    #FFFFFF;
+  --border:     #DDE2E8;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 24px 64px;
+}
+
+.page {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── HEADER ── */
+.header-band {
+  background: var(--navy-deep);
+  border-radius: 16px 16px 0 0;
+  padding: 44px 52px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.header-band::after {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(42,111,168,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+.header-band::before {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 25%;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,154,48,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.eyebrow {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-mid);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.header-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+.header-left { flex: 1; }
+.header-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: #EEF2F7;
+  margin-bottom: 16px;
+}
+.header-title em { font-style: normal; color: var(--gold-mid); }
+.header-sub {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(238,242,247,0.62);
+  max-width: 580px;
+}
+.ns-pill {
+  background: rgba(200,154,48,0.15);
+  border: 1.5px solid rgba(200,154,48,0.4);
+  border-radius: 100px;
+  padding: 8px 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold-mid);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── SECTION BLOCKS: full-width stacked ── */
+.section-block {
+  background: var(--surface);
+  border-left: 1.5px solid var(--border);
+  border-right: 1.5px solid var(--border);
+  border-bottom: 1.5px solid var(--border);
+  padding: 44px 52px 48px;
+}
+
+.panel-eyebrow {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+.panel-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.panel-desc {
+  font-size: 13.5px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 680px;
+}
+
+/* ── SHIFT TABLE ── */
+.shift-table {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  max-width: 800px;
+}
+.shift-header-row {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  background: var(--navy);
+}
+.shift-header-cell {
+  padding: 9px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.shift-header-cell.from-h { color: rgba(238,242,247,0.38); }
+.shift-header-cell.to-h   { color: rgba(63,174,228,0.9); }
+.shift-header-spacer { background: var(--navy); }
+.shift-row {
+  display: grid;
+  grid-template-columns: 1fr 36px 1fr;
+  align-items: center;
+}
+.shift-row:not(:last-child) { border-bottom: 1px solid var(--border); }
+.shift-cell {
+  padding: 13px 16px;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+.shift-cell.from { color: var(--ink-light); background: #F8F9FB; }
+.shift-cell.to   { color: var(--ink); font-weight: 500; background: var(--blue-light); }
+.shift-arrow {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--navy); height: 100%;
+  color: var(--gold-mid); font-size: 13px;
+}
+
+/* ── CAPABILITY CARDS: 2x2 grid ── */
+.cap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.cap-card {
+  border-radius: 10px;
+  padding: 20px 22px;
+  border: 1.5px solid var(--border);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.cap-icon {
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 17px;
+}
+.cap-body { flex: 1; }
+.cap-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; font-weight: 700; color: var(--ink);
+  margin-bottom: 6px; letter-spacing: -0.01em;
+}
+.cap-desc {
+  font-size: 13px; color: var(--ink-mid); line-height: 1.65; margin-bottom: 10px;
+}
+.cap-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.cap-tag { font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
+.cap-1 { background: #EEF4FB; }
+.cap-1 .cap-icon { background: var(--blue-light); color: var(--blue); }
+.cap-1 .cap-tag  { background: var(--blue-light); color: var(--blue); }
+.cap-2 { background: #F2FAF7; }
+.cap-2 .cap-icon { background: var(--teal-light); color: var(--teal); }
+.cap-2 .cap-tag  { background: var(--teal-light); color: var(--teal); }
+.cap-3 { background: #FDFAF3; }
+.cap-3 .cap-icon { background: var(--gold-light); color: var(--gold); }
+.cap-3 .cap-tag  { background: var(--gold-light); color: var(--gold); }
+.cap-4 { background: #F7F3FB; }
+.cap-4 .cap-icon { background: #EDE8F5; color: #6B3FA0; }
+.cap-4 .cap-tag  { background: #EDE8F5; color: #6B3FA0; }
+
+.invest-note {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--navy);
+  border-radius: 9px;
+  padding: 16px 20px;
+}
+.invest-icon {
+  font-size: 14px; color: var(--gold-mid); font-weight: 700;
+  flex-shrink: 0; margin-top: 2px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.invest-text {
+  font-size: 13px; line-height: 1.65;
+  color: rgba(238,242,247,0.75);
+}
+
+/* ── HORIZONS SECTION ── */
+.row-2 {
+  background: var(--navy-deep);
+  border-radius: 0 0 16px 16px;
+  border: 1.5px solid rgba(255,255,255,0.06);
+  border-top: none;
+  padding: 44px 52px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.row-2::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--blue), var(--teal), var(--gold-mid));
+}
+
+.horizons-eyebrow {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold-mid);
+  margin-bottom: 10px;
+}
+.horizons-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 21px; font-weight: 700; letter-spacing: -0.01em;
+  color: #EEF2F7; margin-bottom: 8px;
+}
+.horizons-desc {
+  font-size: 13.5px; font-weight: 300;
+  color: rgba(238,242,247,0.55); line-height: 1.7;
+  margin-bottom: 36px; max-width: 680px;
+}
+
+.horizons-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  position: relative;
+}
+
+/* no track-level line */
+.horizons-track::before { display: none; }
+
+.horizon-card {
+  position: relative;
+  z-index: 1;
+  border-radius: 12px;
+  padding: 20px 22px 22px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+/* gradient line drawn inside each card, below the dot row */
+.horizon-card::after {
+  content: '';
+  position: absolute;
+  top: 66px;
+  left: 0; right: 0;
+  height: 2px;
+  z-index: 2;
+}
+.horizon-card.now::after    { background: var(--blue); }
+.horizon-card.next::after   { background: var(--teal); }
+.horizon-card.future::after { background: var(--gold-mid); }
+.horizon-card.now    { background: rgba(42,111,168,0.14); border-color: rgba(42,111,168,0.3); }
+.horizon-card.next   { background: rgba(46,139,114,0.14); border-color: rgba(46,139,114,0.3); }
+.horizon-card.future { background: rgba(200,154,48,0.12);  border-color: rgba(200,154,48,0.3); }
+
+/* dot + period text side by side (horizontal), line sits below */
+.horizon-dot-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.horizon-dot {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px; font-weight: 800; letter-spacing: 0.04em; color: #fff;
+  flex-shrink: 0;
+}
+.now .horizon-dot    { background: var(--blue); }
+.next .horizon-dot   { background: var(--teal); }
+.future .horizon-dot { background: var(--gold-mid); }
+
+.horizon-period {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.now .horizon-period    { color: rgba(63,174,228,0.75); }
+.next .horizon-period   { color: rgba(80,195,160,0.75); }
+.future .horizon-period { color: rgba(200,154,48,0.75); }
+
+.horizon-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+  color: #EEF2F7; margin-bottom: 10px;
+}
+.horizon-body {
+  font-size: 13px; line-height: 1.7;
+  color: rgba(238,242,247,0.72); margin-bottom: 14px;
+}
+.horizon-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.horizon-pill {
+  font-size: 10px; font-weight: 600; padding: 3px 9px;
+  border-radius: 20px; border: 1.5px solid;
+}
+.now .horizon-pill    { border-color: var(--blue); color: rgba(63,174,228,0.9); }
+.next .horizon-pill   { border-color: var(--teal); color: rgba(80,195,160,0.9); }
+.future .horizon-pill { border-color: var(--gold-mid); color: var(--gold-mid); }
+
+/* ── SUCCESS BAR ── */
+.success-bar {
+  margin-top: 28px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.success-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-mid);
+  margin-bottom: 4px;
+}
+.success-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: rgba(238,242,247,0.75);
+  line-height: 1.5;
+}
+.success-check {
+  width: 18px; height: 18px; border-radius: 4px;
+  border: 1.5px solid var(--gold-mid);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold-mid); font-size: 10px;
+  background: rgba(200,154,48,0.1); flex-shrink: 0;
+}
+
+/* ── FOOTER ── */
+.footer-band {
+  margin-top: 20px;
+  padding: 0 4px;
+}
+.footer-left { font-size: 12px; color: var(--ink-light); }
+
+@media (max-width: 640px) {
+  .header-band { padding: 32px 24px; }
+  .header-content { flex-direction: column; }
+  .section-block { padding: 32px 24px 36px; }
+  .row-2 { padding: 32px 24px 36px; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .horizons-track { grid-template-columns: 1fr; }
+  .horizons-track::before { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header-band">
+    <div class="eyebrow">Agile Delivery Operations</div>
+    <div class="header-content">
+      <div class="header-left">
+        <h1 class="header-title">
+          Building Delivery Intelligence
+        </h1>
+        <p class="header-sub">ADOPS is evolving from delivery coordination to delivery intelligence, moving through three stages: establishing readiness, surfacing signals, and enabling the informed decisions that produce better outcomes.</p>
+      </div>
+      <div class="ns-pill">North Star</div>
+    </div>
+  </div>
+
+  <!-- SECTION 01: THE SHIFT -->
+  <div class="section-block">
+    <div class="panel-eyebrow">Section 01: The Shift</div>
+    <h2 class="panel-title">What the ADL Role Is Becoming</h2>
+    <p class="panel-desc">A deliberate expansion across three stages, from delivery coordination to delivery operations to delivery intelligence.</p>
+
+    <div class="shift-table">
+      <div class="shift-header-row">
+        <div class="shift-header-cell from-h">Delivery Coordination</div>
+        <div class="shift-header-spacer"></div>
+        <div class="shift-header-cell to-h">Delivery Intelligence</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-cell from">Facilitate ceremonies</div>
+        <div class="shift-arrow">→</div>
+        <div class="shift-cell to">Own delivery intelligence</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-cell from">Maintain boards</div>
+        <div class="shift-arrow">→</div>
+        <div class="shift-cell to">Build tracking systems</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-cell from">Spot-check backlog readiness</div>
+        <div class="shift-arrow">→</div>
+        <div class="shift-cell to">Signal readiness gaps proactively</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-cell from">Report delivery status</div>
+        <div class="shift-arrow">→</div>
+        <div class="shift-cell to">Interpret trends and forecast risk</div>
+      </div>
+      <div class="shift-row">
+        <div class="shift-cell from">Rely on context and experience alone</div>
+        <div class="shift-arrow">→</div>
+        <div class="shift-cell to">Connect team delivery to epic-level progress</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 02: CAPABILITIES -->
+  <div class="section-block">
+    <div class="panel-eyebrow">Section 02: How We Create Value</div>
+    <h2 class="panel-title">Four Interconnected Capability Areas</h2>
+    <p class="panel-desc">Realizing this vision requires deliberate investment in training, certification, and time for the team to build toward it. Each capability area reinforces the others.</p>
+
+    <div class="cap-grid">
+
+      <div class="cap-card cap-1">
+        <div class="cap-icon">◈</div>
+        <div class="cap-body">
+          <div class="cap-name">Delivery Excellence</div>
+          <div class="cap-desc">ADLs confidently support teams regardless of delivery model and help teams evolve practices based on their operating environment.</div>
+          <div class="cap-tags">
+            <span class="cap-tag">Kanban</span>
+            <span class="cap-tag">Scrum</span>
+            <span class="cap-tag">Lean</span>
+            <span class="cap-tag">SAFe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cap-card cap-2">
+        <div class="cap-icon">⬡</div>
+        <div class="cap-body">
+          <div class="cap-name">Tooling &amp; Enablement</div>
+          <div class="cap-desc">ADLs serve as effective partners in maintaining healthy delivery systems, improving visibility, reducing friction, and supporting teams through practical tooling expertise within their delivery spaces.</div>
+          <div class="cap-tags">
+            <span class="cap-tag">Jira</span>
+            <span class="cap-tag">Confluence</span>
+            <span class="cap-tag">Reporting</span>
+            <span class="cap-tag">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cap-card cap-3">
+        <div class="cap-icon">◎</div>
+        <div class="cap-body">
+          <div class="cap-name">Continuous Improvement</div>
+          <div class="cap-desc">ADLs are equipped to identify patterns, surface meaningful insights, and facilitate improvements that enhance delivery effectiveness and team sustainability.</div>
+          <div class="cap-tags">
+            <span class="cap-tag">Metrics</span>
+            <span class="cap-tag">Systems Thinking</span>
+            <span class="cap-tag">Learning Loops</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cap-card cap-4">
+        <div class="cap-icon">✦</div>
+        <div class="cap-body">
+          <div class="cap-name">Emerging Practices</div>
+          <div class="cap-desc">ADLs thoughtfully evaluate and apply emerging technologies and practices to reduce administrative burden and enhance delivery outcomes.</div>
+          <div class="cap-tags">
+            <span class="cap-tag">AI Literacy</span>
+            <span class="cap-tag">Automation</span>
+            <span class="cap-tag">Intelligent Signals</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="invest-note">
+      <div class="invest-icon">↑</div>
+      <div class="invest-text">This capability set requires investment. Training, certification, and dedicated innovation time are part of how we get there.</div>
+    </div>
+  </div>
+
+  <!-- SECTION 03: HORIZONS -->
+  <div class="row-2">
+    <div class="horizons-eyebrow">Section 03: The Evolution</div>
+    <h2 class="horizons-title">Delivery Coordination → Operations → Intelligence</h2>
+    <p class="horizons-desc">Three stages, each building on the last. The work happening now creates the foundation for what comes next, a function that increasingly removes overhead so ADLs can focus on the signals and decisions that matter.</p>
+
+    <div class="horizons-track">
+
+      <div class="horizon-card now">
+        <div class="horizon-dot-row">
+          <div class="horizon-dot">NOW</div>
+          <div class="horizon-period">H2 2026</div>
+        </div>
+        <div class="horizon-heading">Establish Consistency &amp; Visibility</div>
+        <div class="horizon-body">ADLs apply core metrics, conduct active backlog health reviews, and connect sprint-level output to epic progress through observation, experience, and close partnership with Product and Engineering.</div>
+        <div class="horizon-pills">
+          <span class="horizon-pill">Delivery Metrics</span>
+          <span class="horizon-pill">Story Standards</span>
+          <span class="horizon-pill">Backlog Reviews</span>
+          <span class="horizon-pill">Epic Tracking</span>
+        </div>
+      </div>
+
+      <div class="horizon-card next">
+        <div class="horizon-dot-row">
+          <div class="horizon-dot">NEXT</div>
+        </div>
+        <div class="horizon-heading">Move from Reporting to Decision Support</div>
+        <div class="horizon-body">ADOPS develops shared backlog health indicators and readiness signals. Delivery intelligence shifts from status reporting to surfacing team-level risks, flow patterns, and quality signals earlier in the delivery cycle.</div>
+        <div class="horizon-pills">
+          <span class="horizon-pill">Readiness Signals</span>
+          <span class="horizon-pill">Flow Intelligence</span>
+          <span class="horizon-pill">Capacity Trends</span>
+          <span class="horizon-pill">Quality Patterns</span>
+        </div>
+      </div>
+
+      <div class="horizon-card future">
+        <div class="horizon-dot-row">
+          <div class="horizon-dot">FUTURE</div>
+        </div>
+        <div class="horizon-heading">Enable Intelligent Delivery Systems</div>
+        <div class="horizon-body">Tooling and automation eliminate administrative drag, reducing the noise ADLs have to search through so they can focus on the signals that matter and make deliberate decisions about what to surface, react to, or guide.</div>
+        <div class="horizon-pills">
+          <span class="horizon-pill">Predictive Insights</span>
+          <span class="horizon-pill">Automated Signals</span>
+          <span class="horizon-pill">Epic-to-Delivery Alignment</span>
+          <span class="horizon-pill">AI-Assisted Readiness</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="success-bar">
+      <div class="success-label">How You'll Know We're There</div>
+      <div class="success-item">
+        <div class="success-check">✓</div>
+        Readiness concerns surface before they impact planning
+      </div>
+      <div class="success-item">
+        <div class="success-check">✓</div>
+        Risks identified early enough for teams to act
+      </div>
+      <div class="success-item">
+        <div class="success-check">✓</div>
+        Leaders use delivery data to inform decisions
+      </div>
+      <div class="success-item">
+        <div class="success-check">✓</div>
+        ADLs spend less time searching for gaps, more time solving them
+      </div>
+      <div class="success-item">
+        <div class="success-check">✓</div>
+        Delivery conversations focus on actions, not status
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-band">
+    <div class="footer-left">Agile Delivery Operations · IT PMO</div>
+  </div>
+
+</div>
+</body>
+</html>
